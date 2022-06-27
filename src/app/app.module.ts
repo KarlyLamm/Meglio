@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FronteggAppModule, FronteggComponent } from '@frontegg/angular';
 
 @NgModule({
   declarations: [
@@ -10,9 +11,19 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FronteggAppModule.forRoot(
+      {
+        contextOptions: {
+          baseUrl: 'https://[YOUR-SUB-DOMAIN].frontegg.com',
+          clientId: '[YOUR-CLIENT-ID]'
+        },
+        hostedLoginBox: true,
+      }
+    ),
   ],
   providers: [],
+  entryComponents: [FronteggComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
